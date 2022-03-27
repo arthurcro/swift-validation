@@ -1,45 +1,28 @@
 import Validation
 
-let greaterThan10 = Predicate<Int> {
-  $0 > 10
-}
-
-let v1 = Predicate(\String.isEmpty)
-  .pipe(Predicate<String> { $0 != "Bob" })
-
-//dump(v1.validate("Bob"))
-let isEmpty = Predicate(\String.isEmpty)
-let isBob = Predicate { $0 == "Bob" }
-
-dump(
-  Validators.Many(
-    [
-      isEmpty,
-      isBob
-    ]
-  )
-  .validate("Beb")
-)
-
-//dump(
-//  Pipe(
-//    Predicate(\String.isEmpty),
-//    Predicate { $0 == "Bob" }
-//  )
-//  .validate("Bob")
-//)
-
 struct User {
-  let id: Int
-  let name: String
+  var age: Int
+  var id: String
+  var name: String
 }
 
-let userValidator = Zip2(
-  Always<Int>(),
-  Predicate(\String.isEmpty)
-)
-  .map(User.init)
-  .eraseToAnyValidator()
+let idValidator = Not(Predicate(\String.isEmpty))
+let ageValidator = Predicate { $0 > 10 }
+let nameValidator = ageValidator.pullback(\String.count)
 
-let user = userValidator.validate((10, "Aa"))
+let userValidator = Zip3(ageValidator, idValidator, nameValidator).map(User.init)
 
+dump(userValidator.eraseToAnyValidator().self)
+
+let age = 15
+let id = "myID"
+let name = "Arthur"
+
+let validatedUser = userValidator.validate((age, id, name))
+
+switch validatedUser {
+  case let .valid(user):
+    dump(user)
+case let .invalid(errors):
+    dump(errors)
+}
