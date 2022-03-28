@@ -6,9 +6,9 @@ struct User {
   var name: String
 }
 
-let idValidator = Not(Predicate(\String.isEmpty))
-let ageValidator = Predicate { $0 > 10 }
-let nameValidator = ageValidator.pullback(\String.count)
+let idValidator = Not(Predicate(\String.isEmpty)).eraseToAnyValidator()
+let ageValidator = Predicate { $0 > 10 }.eraseToAnyValidator()
+let nameValidator = ageValidator.pullback(\String.count).eraseToAnyValidator()
 
 let userValidator = Zip3(ageValidator, idValidator, nameValidator).map(User.init)
 
@@ -26,3 +26,19 @@ switch validatedUser {
 case let .invalid(errors):
     dump(errors)
 }
+
+let b = Validate {
+  idValidator
+  nameValidator
+}
+
+/*
+ 
+ Validate {
+  OneOf {
+    Predicate<String> { $0 != "Bob" },
+    Predicate<String> { $0.count == 10 }
+  }
+ }.map(...)
+ 
+ */

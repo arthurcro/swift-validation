@@ -1,8 +1,6 @@
 extension Validators {
   public struct Pullback<Downstream, Input>: Validator
   where Downstream: Validator {
-    public typealias Valid = Input
-    
     private let downstream: Downstream
     private let transform: (Input) -> Downstream.Input
     

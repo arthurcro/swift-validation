@@ -1,8 +1,5 @@
 public struct OneOf<V>: Validator where V: Validator
 {
-  public typealias Input = V.Input
-  public typealias Valid = V.Valid
-  
   private let validators: [V]
   
   public init(_ validators: V...) {

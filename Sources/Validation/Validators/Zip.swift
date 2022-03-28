@@ -1,8 +1,5 @@
 public struct Zip2<Upstream1, Upstream2>: Validator
 where Upstream1: Validator, Upstream2: Validator {
-  public typealias Input = (Upstream1.Input, Upstream2.Input)
-  public typealias Valid = (Upstream1.Valid, Upstream2.Valid)
-  
   private let upstream1: Upstream1
   private let upstream2: Upstream2
   
@@ -26,9 +23,6 @@ where Upstream1: Validator, Upstream2: Validator {
 
 public struct Zip3<Upstream1, Upstream2, Upstream3>: Validator
 where Upstream1: Validator, Upstream2: Validator, Upstream3: Validator {
-  public typealias Input = (Upstream1.Input, Upstream2.Input, Upstream3.Input)
-  public typealias Valid = (Upstream1.Valid, Upstream2.Valid, Upstream3.Valid)
-  
   private let upstream1: Upstream1
   private let upstream2: Upstream2
   private let upstream3: Upstream3

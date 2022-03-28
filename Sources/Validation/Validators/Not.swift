@@ -1,9 +1,6 @@
 public struct Not<Upstream>: Validator
 where Upstream: Validator,
       Upstream.Input == Upstream.Valid {
-  public typealias Input = Upstream.Input
-  public typealias Valid = Upstream.Valid
-  
   private let upstream: Upstream
   
   public init(
@@ -25,4 +22,8 @@ where Upstream: Validator,
     
     return .valid(input)
   }
+}
+
+func blob() {
+  let b = Not(Predicate<Int> { $0 > 10 })
 }

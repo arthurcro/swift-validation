@@ -1,8 +1,5 @@
 extension Validators {
   public struct Many<V: Validator>: Validator {
-    public typealias Input = V.Input
-    public typealias Valid = V.Valid
-    
     private let validators: [V]
     
     public init(
@@ -12,8 +9,8 @@ extension Validators {
     }
     
     public func validate(
-      _ input: Input
-    ) -> Validated<Valid> {
+      _ input: V.Input
+    ) -> Validated<V.Valid> {
       guard let firstValidator = self.validators.first
       else {
         let emptyErrorDescription = """

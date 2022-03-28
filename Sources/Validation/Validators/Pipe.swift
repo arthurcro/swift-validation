@@ -2,10 +2,8 @@ extension Validators {
   public struct Pipe<Upstream, Downstream>: Validator
   where Upstream: Validator,
         Downstream: Validator,
-        Upstream.Valid == Downstream.Input {
-    public typealias Input = Upstream.Input
-    public typealias Valid = Downstream.Valid
-    
+        Upstream.Valid == Downstream.Input
+  {
     private let upstream: Upstream
     private let downstream: Downstream
     

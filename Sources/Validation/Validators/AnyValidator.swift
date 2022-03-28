@@ -3,8 +3,7 @@ public struct AnyValidator<Input, Valid>: Validator {
   
   public init<V: Validator>(
     _ validator: V
-  )
-  where V.Input == Input, V.Valid == Valid {
+  ) where V.Input == Input, V.Valid == Valid {
     self.validator = validator.validate
   }
   
