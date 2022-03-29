@@ -23,7 +23,3 @@ where Upstream: Validator,
     return .valid(input)
   }
 }
-
-func blob() {
-  let b = Not(Predicate<Int> { $0 > 10 })
-}

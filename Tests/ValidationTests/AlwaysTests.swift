@@ -3,8 +3,8 @@ import XCTest
 
 final class AlwaysTests: XCTestCase {
   func testAlways() {
-    let alwaysString = Always<String>()
-    let alwaysInt = Always<Int>()
+    let alwaysString = Validators.Always<String>()
+    let alwaysInt = Validators.Always<Int>()
     
     assertValid(alwaysString.validate("Bob")) {
       XCTAssertEqual($0, "Bob")

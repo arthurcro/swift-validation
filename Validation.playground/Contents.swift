@@ -29,16 +29,7 @@ case let .invalid(errors):
 
 let b = Validate {
   idValidator
-  nameValidator
+//  nameValidator
 }
 
-/*
- 
- Validate {
-  OneOf {
-    Predicate<String> { $0 != "Bob" },
-    Predicate<String> { $0.count == 10 }
-  }
- }.map(...)
- 
- */
+let d = Validators.Many(idValidator)
