@@ -1,5 +1,5 @@
 extension Validators {
-  public struct Pipe<Upstream, Downstream>: Validator
+  public struct Pipe2<Upstream, Downstream>: Validator
   where Upstream: Validator,
         Downstream: Validator,
         Upstream.Valid == Downstream.Input
@@ -24,7 +24,7 @@ extension Validators {
 }
 
 extension Validator {
-  public func pipe<V: Validator>(_ validator: V) -> Validators.Pipe<Self, V> {
+  public func pipe<V: Validator>(_ validator: V) -> Validators.Pipe2<Self, V> {
     .init(self, validator)
   }
 }

@@ -1,4 +1,4 @@
-@resultBuilder public enum ValidateBuilder {
+@resultBuilder public enum OneOfBuilder {
   public static func buildBlock<V: Validator>(
     _ validator: V
   ) -> V {
@@ -7,13 +7,13 @@
   
   public static func buildArray<V: Validator>(
     _ validators: [V]
-  ) -> Validators.All<V> {
+  ) -> Validators.OneOfMany<V> {
     .init(validators)
   }
   
   public static func buildBlock<V: Validator>(
     _ validators: V...
-  ) -> Validators.All<V> {
+  ) -> Validators.OneOfMany<V> {
     .init(validators)
   }
 }
