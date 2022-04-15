@@ -1,11 +1,15 @@
 import Foundation
 
 public struct ValidationError: Error {
-  public var description: String
+  public var message: String
   
   public init(
-    description: String
+    _ message: String
   ) {
-    self.description = description
+    self.message = message
   }
+}
+
+extension ValidationError: CustomStringConvertible {
+  public var description: String { message }
 }

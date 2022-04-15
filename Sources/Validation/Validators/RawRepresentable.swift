@@ -9,7 +9,7 @@ extension Validators {
       if let `case` = Wrapped(rawValue: input) {
         return .valid(`case`)
       }
-      return .invalid([.init(description: "\"\(input)\" does not match any case of \(Wrapped.self)")])
+      return .invalid([.init("\"\(input)\" does not match any case of \(Wrapped.self)")])
     }
   }
 }

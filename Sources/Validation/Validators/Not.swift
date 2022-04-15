@@ -17,7 +17,7 @@ where Upstream: Validator,
       let errorDescription = """
       Expected validation with \(Upstream.self) on "\(input)" to fail but succeeded.
       """
-      return .invalid([.init(description: errorDescription)])
+      return .invalid([.init(errorDescription)])
     }
     
     return .valid(input)

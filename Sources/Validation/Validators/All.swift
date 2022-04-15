@@ -16,7 +16,7 @@ extension Validators {
         let emptyErrorDescription = """
         \(All.self) expects at least one \(V.self) but none were provided.
         """
-        return .invalid([.init(description: emptyErrorDescription)])
+        return .invalid([.init(emptyErrorDescription)])
       }
       
       var validated = firstValidator.validate(input)

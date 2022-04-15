@@ -5,7 +5,7 @@ extension Validators {
         return .valid(input)
       }
       return .invalid(
-        [.init(description: "Expected value of type \(Wrapped.self) but got nil instead.")]
+        [.init("Expected value of type \(Wrapped.self) but got nil instead.")]
       )
     }
   }
