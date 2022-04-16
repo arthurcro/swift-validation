@@ -17,7 +17,7 @@ The library exposes a `Validated` type and some helpers to accumulate validation
 ```swift
 enum Validated<Valid> {
  case valid(Valid)
- case invalid(ValidationError)
+ case invalid([ValidationError])
 }
 ```
 
