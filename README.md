@@ -5,7 +5,8 @@ An experimental library for validating just about anything.
 ## Motivation
 
 Inspired by [swift-parsing](https://github.com/pointfreeco/swift-parsing), this library provides a declarative and composable way of validating any type of input into a `Validated` struct.
-This library is not meant to be used in production code yet. It is an exercise to learn more about Swift type system and result builders.   
+
+:warning: This library is not meant to be used in production code yet. It is an exercise to learn more about Swift type system and result builders.   
 
 ## Getting started
 
@@ -37,13 +38,36 @@ public protocol Validator {
 
 The most common way of creating a `Validator` is through the various builders.
 
-The `Validate` validator, is an entry point for the `ValidateBuilder` which validate an input by running it again various `Validator`s of the matching `Input` and `Valid` associated value. 
+The `Validate` validator, is an entry point for the `ValidateBuilder`. It validates an input by running it again various `Validator`s of the matching `Input` and `Valid` associated value. It accumulates errors.
 
 ```swift
 Validate {
-  Predicate<String> {  }
+  Predicate<String> { !$0.isEmpty }
+  Predicate<String> { $0 != "bad" }
+}
+```
+
+The `OneOf` validator is an entry point for the `OneOfBuilder`. It validates an input by running it again various `Validator`s of the matching `Input` and `Valid` associated value. It succeeds if one of the validators succeeds and only fails if all of them fail.
+
+```swift
+OneOf {
+  Predicate("a")
+  Predicate("b")
+  Predicate("c")
+}
+```
+
+The `ValidateThrough` validator is an entry point for the `ValidateThroughBuilder`. It validates an input by running it again various `Validator`s of the matching `Input` and `Valid` associated value. It pipes the `Valid` value of a previous validator to the next. 
+
+```swift
+enum Enum: String {
+  case a, b, c
 }
 
+ValidateThrough {
+  String?.validator()
+  Enum.validator()
+}
 ```
 
 ## Playground
