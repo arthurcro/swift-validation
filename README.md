@@ -6,7 +6,7 @@ An experimental library for validating just about anything.
 
 Inspired by [swift-parsing](https://github.com/pointfreeco/swift-parsing), this library provides a declarative and composable way of validating any type of input into a `Validated` struct.
 
-:warning: This library is not meant to be used in production code yet. It is an exercise to learn more about Swift type system and result builders.   
+:warning: This library is not meant to be used in production code. It is an exercise to learn more about Swift type system and result builders.   
 
 ## Getting started
 
