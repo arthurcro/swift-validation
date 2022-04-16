@@ -21,6 +21,12 @@ final class ValidateTests: XCTestCase {
       predicate1
       predicate2
     }
+    assertInvalid(validate.validate("abc")) {
+      XCTAssertEqual($0.count, 1)
+    }
+    assertInvalid(validate.validate("bcdef")) {
+      XCTAssertEqual($0.count, 1)
+    }
     assertInvalid(validate.validate("bcd")) {
       XCTAssertEqual($0.count, 2)
     }
