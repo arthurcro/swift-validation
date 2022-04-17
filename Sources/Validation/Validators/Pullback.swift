@@ -3,7 +3,7 @@ extension Validators {
   where Downstream: Validator {
     private let downstream: Downstream
     private let transform: (Input) -> Downstream.Input
-    
+
     public init(
       downstream: Downstream,
       transform: @escaping (Input) -> Downstream.Input
@@ -11,7 +11,7 @@ extension Validators {
       self.downstream = downstream
       self.transform = transform
     }
-    
+
     public func validate(_ input: Input) -> Validated<Input> {
       self.downstream.validate(self.transform(input)).map { _ in input }
     }

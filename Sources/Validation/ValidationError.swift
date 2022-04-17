@@ -2,7 +2,7 @@ import Foundation
 
 public struct ValidationError: Error {
   public var message: String
-  
+
   public init(
     _ message: String
   ) {

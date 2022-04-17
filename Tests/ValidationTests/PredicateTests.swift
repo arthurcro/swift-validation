@@ -1,4 +1,5 @@
 import XCTest
+
 @testable import Validation
 
 final class PredicateTests: XCTestCase {
@@ -8,7 +9,7 @@ final class PredicateTests: XCTestCase {
       XCTAssertEqual("abcdefghij", $0)
     }
   }
-  
+
   func testPredicate_Invalid() {
     let predicate = Predicate<String> { $0.count == 10 }
     assertInvalid(predicate.validate("abcd")) { errors in

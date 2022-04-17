@@ -1,11 +1,12 @@
-public extension Validators {
-  struct Map<Upstream, Input, Valid>: Validator
-  where Upstream: Validator,
-        Upstream.Input == Input
+extension Validators {
+  public struct Map<Upstream, Input, Valid>: Validator
+  where
+    Upstream: Validator,
+    Upstream.Input == Input
   {
     private let transform: (Upstream.Valid) -> Valid
     private let upstream: Upstream
-    
+
     public init(
       upstream: Upstream,
       _ transform: @escaping (Upstream.Valid) -> Valid
@@ -13,7 +14,7 @@ public extension Validators {
       self.upstream = upstream
       self.transform = transform
     }
-    
+
     public func validate(
       _ input: Input
     ) -> Validated<Valid> {

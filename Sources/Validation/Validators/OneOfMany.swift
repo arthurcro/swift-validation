@@ -1,12 +1,11 @@
 extension Validators {
-  public struct OneOfMany<V>: Validator where V: Validator
-  {
+  public struct OneOfMany<V>: Validator where V: Validator {
     private let validators: [V]
-    
+
     public init(_ validators: [V]) {
       self.validators = validators
     }
-    
+
     public func validate(
       _ input: V.Input
     ) -> Validated<V.Valid> {

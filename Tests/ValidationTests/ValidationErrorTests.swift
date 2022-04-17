@@ -1,4 +1,5 @@
 import XCTest
+
 @testable import Validation
 
 final class ValidationErrorTests: XCTestCase {

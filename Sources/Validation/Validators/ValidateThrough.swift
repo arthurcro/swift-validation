@@ -7,7 +7,7 @@ where V: Validator {
   ) {
     self.validator = builder()
   }
-  
+
   public func validate(_ input: V.Input) -> Validated<V.Valid> {
     self.validator.validate(input)
   }

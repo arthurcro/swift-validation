@@ -3,7 +3,7 @@ public protocol Validator {
   associatedtype Input
   /// The type of value validated
   associatedtype Valid
-  
+
   /// Attempt to validate an input
   /// - Parameter input: The input to validate
   /// - Returns: A validated value if valid or an array of errors

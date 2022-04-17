@@ -1,12 +1,13 @@
 extension Validators {
   public struct Pipe2<Upstream, Downstream>: Validator
-  where Upstream: Validator,
-        Downstream: Validator,
-        Upstream.Valid == Downstream.Input
+  where
+    Upstream: Validator,
+    Downstream: Validator,
+    Upstream.Valid == Downstream.Input
   {
     private let upstream: Upstream
     private let downstream: Downstream
-    
+
     public init(
       _ upstream: Upstream,
       _ downstream: Downstream
@@ -14,7 +15,7 @@ extension Validators {
       self.upstream = upstream
       self.downstream = downstream
     }
-    
+
     public func validate(
       _ input: Upstream.Input
     ) -> Validated<Downstream.Valid> {

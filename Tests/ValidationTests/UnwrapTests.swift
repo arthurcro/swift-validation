@@ -1,4 +1,5 @@
 import XCTest
+
 @testable import Validation
 
 final class UnwrapTests: XCTestCase {
@@ -8,7 +9,7 @@ final class UnwrapTests: XCTestCase {
       XCTAssertEqual("abcd", $0)
     }
   }
-  
+
   func testUnwrap_Invalid() {
     let unwrap = String?.validator()
     assertInvalid(unwrap.validate(nil)) {

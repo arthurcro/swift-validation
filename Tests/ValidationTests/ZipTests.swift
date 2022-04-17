@@ -1,4 +1,5 @@
 import XCTest
+
 @testable import Validation
 
 final class ZipTests: XCTestCase {
@@ -11,7 +12,7 @@ final class ZipTests: XCTestCase {
       XCTAssertEqual($0.1, 10)
     }
   }
-  
+
   func testZip2_Invalid() {
     let predicateString = Predicate("ab")
     let predicateInt = Predicate(10)
@@ -20,7 +21,7 @@ final class ZipTests: XCTestCase {
       XCTAssertEqual($0.count, 2)
     }
   }
-  
+
   func testZip3_Valid() {
     let predicateString = Predicate("ab")
     let predicateInt = Predicate(10)
@@ -32,7 +33,7 @@ final class ZipTests: XCTestCase {
       XCTAssertEqual($0.2, true)
     }
   }
-  
+
   func testZip3_Invalid() {
     let predicateString = Predicate("ab")
     let predicateInt = Predicate(10)
@@ -42,7 +43,7 @@ final class ZipTests: XCTestCase {
       XCTAssertEqual($0.count, 3)
     }
   }
-  
+
   func testZip4_Valid() {
     let predicateString = Predicate("ab")
     let predicateInt = Predicate(10)
@@ -56,7 +57,7 @@ final class ZipTests: XCTestCase {
       XCTAssertEqual($0.3, 10.5)
     }
   }
-  
+
   func testZip4_Invalid() {
     let predicateString = Predicate("ab")
     let predicateInt = Predicate(10)

@@ -2,7 +2,7 @@ public struct Zip2<V1, V2>: Validator
 where V1: Validator, V2: Validator {
   private let v1: V1
   private let v2: V2
-  
+
   public init(
     _ v1: V1,
     _ v2: V2
@@ -10,7 +10,7 @@ where V1: Validator, V2: Validator {
     self.v1 = v1
     self.v2 = v2
   }
-  
+
   public func validate(
     _ input: (V1.Input, V2.Input)
   ) -> Validated<(V1.Valid, V2.Valid)> {
@@ -22,13 +22,15 @@ where V1: Validator, V2: Validator {
 }
 
 public struct Zip3<V1, V2, V3>: Validator
-where V1: Validator,
-      V2: Validator,
-      V3: Validator {
+where
+  V1: Validator,
+  V2: Validator,
+  V3: Validator
+{
   private let v1: V1
   private let v2: V2
   private let v3: V3
-  
+
   public init(
     _ v1: V1,
     _ v2: V2,
@@ -38,7 +40,7 @@ where V1: Validator,
     self.v2 = v2
     self.v3 = v3
   }
-  
+
   public func validate(
     _ input: (V1.Input, V2.Input, V3.Input)
   ) -> Validated<(V1.Valid, V2.Valid, V3.Valid)> {
@@ -51,15 +53,17 @@ where V1: Validator,
 }
 
 public struct Zip4<V1, V2, V3, V4>: Validator
-where V1: Validator,
-      V2: Validator,
-      V3: Validator,
-      V4: Validator {
+where
+  V1: Validator,
+  V2: Validator,
+  V3: Validator,
+  V4: Validator
+{
   private let v1: V1
   private let v2: V2
   private let v3: V3
   private let v4: V4
-  
+
   public init(
     _ v1: V1,
     _ v2: V2,
@@ -71,7 +75,7 @@ where V1: Validator,
     self.v3 = v3
     self.v4 = v4
   }
-  
+
   public func validate(
     _ input: (V1.Input, V2.Input, V3.Input, V4.Input)
   ) -> Validated<(V1.Valid, V2.Valid, V3.Valid, V4.Valid)> {

@@ -1,4 +1,5 @@
 import XCTest
+
 @testable import Validation
 
 final class AnyValidatorTests: XCTestCase {
@@ -9,7 +10,7 @@ final class AnyValidatorTests: XCTestCase {
       XCTAssertEqual("abcd", $0)
     }
   }
-  
+
   func testAnyValidator_Invalid() {
     let predicate = Predicate("abcd")
     let anyValidator = AnyValidator(predicate)
@@ -17,7 +18,7 @@ final class AnyValidatorTests: XCTestCase {
       XCTAssertEqual($0.count, 1)
     }
   }
-    
+
   func testEraseToAnyValidator_Valid() {
     let predicate = Predicate("abcd")
     let anyValidator = predicate.eraseToAnyValidator()
@@ -25,7 +26,7 @@ final class AnyValidatorTests: XCTestCase {
       XCTAssertEqual("abcd", $0)
     }
   }
-  
+
   func testEraseToAnyValidator_Invalid() {
     let predicate = Predicate("abcd")
     let anyValidator = predicate.eraseToAnyValidator()

@@ -1,4 +1,5 @@
 import XCTest
+
 @testable import Validation
 
 final class NotTests: XCTestCase {
@@ -8,7 +9,7 @@ final class NotTests: XCTestCase {
       XCTAssertEqual("dcba", $0)
     }
   }
-  
+
   func testNot_Invalid() {
     let not = Not(Predicate("abcd"))
     assertInvalid(not.validate("abcd")) {

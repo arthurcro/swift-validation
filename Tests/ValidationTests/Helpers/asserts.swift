@@ -1,5 +1,5 @@
-import XCTest
 import Validation
+import XCTest
 
 func assertValid<Valid>(
   _ validated: Validated<Valid>,

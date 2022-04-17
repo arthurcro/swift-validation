@@ -1,4 +1,5 @@
 import XCTest
+
 @testable import Validation
 
 final class PullbackTests: XCTestCase {
@@ -8,7 +9,7 @@ final class PullbackTests: XCTestCase {
       XCTAssertEqual("abcde", $0)
     }
   }
-  
+
   func testPullback_Invalid() {
     let pullback = Predicate(5).pullback(\String.count)
     assertInvalid(pullback.validate("abc")) {
